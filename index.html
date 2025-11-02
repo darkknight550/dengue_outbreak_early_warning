@@ -1,106 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dengue Outbreak Early Warning</title>
-  <style>
-    body {
-      background-image:url("https://www.addmoretolives.com/wp-content/uploads/2024/12/A-Guide-on-Dengue-Fever-DF-vs.-Dengue-Hemorrhagic-Fever-DHF-scaled.jpeg")      
-      font-family: Arial, sans-serif;
-      background: #f4f8ff;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #1a73e8;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-    th, td {
-      padding: 8px;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
-    th {
-      background: #e3f2fd;
-    }
-    input[type="number"] {
-      width: 80px;
-      padding: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      background: #1a73e8;
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #155db5;
-    }
-    .risk-low { color: green; font-weight: bold; }
-    .risk-medium { color: orange; font-weight: bold; }
-    .risk-high { color: red; font-weight: bold; }
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: #777;
-      margin-top: 25px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>🌦️ Dengue Outbreak Early Warning</h1>
-    <p>Enter daily weather data to check dengue risk levels.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dengue Outbreak Early Warning</title>
+    <style>
+          body {
+        background-image: url("https://www.addmoretolives.com/wp-content/uploads/2024/12/A-Guide-on-Dengue-Fever-DF-vs.-Dengue-Hemorrhagic-Fever-DHF-scaled.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
 
-    <table id="dataTable">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Temperature (°C)</th>
-          <th>Humidity (%)</th>
-          <th>Rainfall (mm)</th>
-          <th>Risk Score</th>
-          <th>Risk Level</th>
-        </tr>
-      </thead>
-      <tbody id="dataBody">
-        <!-- rows added dynamically -->
-      </tbody>
-    </table>
 
-    <div style="margin-top:20px;">
-      <button onclick="addRow()">Add New Row</button>
-      <button onclick="calculateRisk()">Calculate Risk</button>
+          .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+          }
+          h1 {
+            text-align: center;
+            color: #1a73e8;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+          }
+          th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+          }
+          th {
+            background: #e3f2fd;
+          }
+          input[type="number"] {
+            width: 80px;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          }
+          }button {
+            background: #1a73e8;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+          }
+          button:hover {
+            background: #155db5;
+          }
+          .risk-low { color: green; font-weight: bold; }
+          .risk-medium { color: orange; font-weight: bold; }
+          .risk-high { color: red; font-weight: bold; }
+          .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            margin-top: 25px;
+          }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🌦️ Dengue Outbreak Early Warning</h1>
+      <p>Enter daily weather data to check dengue risk levels.</p>
+
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Rainfall (mm)</th>
+            <th>Risk Score</th>
+            <th>Risk Level</th>
+          </tr>
+        </thead>
+        <tbody id="dataBody">
+          <!-- rows added dynamically -->
+        </tbody>
+      </table>
+
+      <div style="margin-top: 20px">
+        <button onclick="addRow()">Add New Row</button>
+        <button onclick="calculateRisk()">Calculate Risk</button>
+      </div>
+
+      <div class="footer">
+        Based on weather signals for early dengue outbreak warning.
+      </div>
     </div>
 
-    <div class="footer">
-       Based on weather signals for early dengue outbreak warning.
-    </div>
-  </div>
-
-  <script>
-    function addRow() {
-      const tbody = document.getElementById('dataBody');
-      const row = document.createElement('tr');
-      row.innerHTML = `
+    <script>
+      function addRow() {
+        const tbody = document.getElementById("dataBody");
+        const row = document.createElement("tr");
+        row.innerHTML = `
         <td><input type="date"></td>
         <td><input type="number" placeholder="°C"></td>
         <td><input type="number" placeholder="%"></td>
@@ -108,43 +112,48 @@
         <td>-</td>
         <td>-</td>
       `;
-      tbody.appendChild(row);
-    }
+        tbody.appendChild(row);
+      }
 
-    function calculateRisk() {
-      const rows = document.querySelectorAll('#dataBody tr');
-      rows.forEach(row => {
-        const t = parseFloat(row.children[1].querySelector('input').value);
-        const h = parseFloat(row.children[2].querySelector('input').value);
-        const r = parseFloat(row.children[3].querySelector('input').value);
+      function calculateRisk() {
+        const rows = document.querySelectorAll("#dataBody tr");
+        rows.forEach((row) => {
+          const t = parseFloat(row.children[1].querySelector("input").value);
+          const h = parseFloat(row.children[2].querySelector("input").value);
+          const r = parseFloat(row.children[3].querySelector("input").value);
 
-        if (isNaN(t) || isNaN(h) || isNaN(r)) {
-          alert("⚠️ Please fill all fields before calculating.");
-          return;
-        }
+          if (isNaN(t) || isNaN(h) || isNaN(r)) {
+            alert("⚠️ Please fill all fields before calculating.");
+            return;
+          }
 
-        // Heuristic dengue risk model
-        let tempScore = (t >= 25 && t <= 35) ? 100 : Math.max(0, 100 - Math.abs(t - 30) * 10);
-        let humScore = (h >= 75) ? 100 : h * 1.3;
-        let rainScore = (r >= 10 && r <= 50) ? 100 : Math.max(0, 100 - Math.abs(r - 30) * 3);
+          // Heuristic dengue risk model
+          let tempScore =
+            t >= 25 && t <= 35 ? 100 : Math.max(0, 100 - Math.abs(t - 30) * 10);
+          let humScore = h >= 75 ? 100 : h * 1.3;
+          let rainScore =
+            r >= 10 && r <= 50 ? 100 : Math.max(0, 100 - Math.abs(r - 30) * 3);
 
-        const totalScore = Math.round((0.4 * tempScore + 0.35 * humScore + 0.25 * rainScore) / 1);
-        let riskLevel = "", className = "";
-        if (totalScore < 50) {
-          riskLevel = "Low";
-          className = "risk-low";
-        } else if (totalScore < 75) {
-          riskLevel = "Medium";
-          className = "risk-medium";
-        } else {
-          riskLevel = "High";
-          className = "risk-high";
-        }
+          const totalScore = Math.round(
+            (0.4 * tempScore + 0.35 * humScore + 0.25 * rainScore) / 1
+          );
+          let riskLevel = "",
+            className = "";
+          if (totalScore < 50) {
+            riskLevel = "Low";
+            className = "risk-low";
+          } else if (totalScore < 75) {
+            riskLevel = "Medium";
+            className = "risk-medium";
+          } else {
+            riskLevel = "High";
+            className = "risk-high";
+          }
 
-        row.children[4].textContent = totalScore;
-        row.children[5].innerHTML = `<span class='${className}'>${riskLevel}</span>`;
-      });
-    }
-  </script>
-</body>
+          row.children[4].textContent = totalScore;
+          row.children[5].innerHTML = `<span class='${className}'>${riskLevel}</span>`;
+        });
+      }
+    </script>
+  </body>
 </html>
